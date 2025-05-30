@@ -316,6 +316,8 @@ VOID loop () {
 - v1.5 - a broken conclusion after cleaning without specifying the cursor
 - V1.6 - The choice of I2C Pin for ESPX has been added, Clear (..) for buffer, added the ability to disable the text module
 - V1.6.1 - re -release for the library manager
+- v1.6.5 - ability to get cursor's current position getCursorXY();
+- v1.6.6 - ability to draw inverted bytes drawBytes();
 
 <a id="feedback"> </a>
 ## bugs and feedback

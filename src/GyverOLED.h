@@ -753,16 +753,18 @@ class GyverOLED {
         }
     }
 
-    // вывести одномерный байтовый массив (линейный битмап высотой 8)
-    void drawBytes(uint8_t* data, byte size) {
+    // вывести одномерный байтовый массив (линейный битмап высотой 8) с возможностью инверсии
+    void drawBytes(uint8_t* data, byte size, bool inv = false) {
         if (!_BUFF) beginData();
+        uint8_t d;
         for (byte i = 0; i < size; i++) {
+            d = inv ? ~data[i] : data[i];
             if (++_x > _maxX) return;
             if (_shift == 0) {                          // если вывод без сдвига на строку
-                writeData(data[i]);                     // выводим
+                writeData(d);                     // выводим
             } else {                                    // со сдвигом
-                writeData(data[i] << _shift);           // верхняя часть
-                writeData(data[i] >> (8 - _shift), 1);  // нижняя часть со сдвигом на 1
+                writeData(d << _shift);           // верхняя часть
+                writeData(d >> (8 - _shift), 1);  // нижняя часть со сдвигом на 1
             }
         }
         if (!_BUFF) endTransm();
