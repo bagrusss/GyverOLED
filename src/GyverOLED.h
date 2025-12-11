@@ -382,7 +382,7 @@ class GyverOLED {
     }
 
     // инвертировать текст (0-1)
-    void invertText(bool inv) { _invState = inv; }
+    bool invertText(bool inv) { bool prev = _invState; _invState = inv; return prev; }
 
     void textMode(byte mode) { _mode = mode; }
 
